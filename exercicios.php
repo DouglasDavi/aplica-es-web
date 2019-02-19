@@ -1,8 +1,3 @@
-<?php
-echo "teste";
-
-
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,10 +5,6 @@ echo "teste";
         <title></title>
     </head>
     <body>
-        <!-- 
-        Elabore um programa em PHP que calcule a média aritmética de duas notas 
-        e exiba o resultado na tela. As notas estão armazenadas em variáveis.
-        -->
         <div>
             <h2>Exercício 1</h2>
             <form method="post" action="">
@@ -101,7 +92,44 @@ echo "teste";
                     }
                     ?></p>
             </form>
-        </div>        
+        </div>
+        <div style="text-align: center; color: blue;"><h1>Dia 2</h1></div>  
+        <div>
+        	<h4>Média de Nota</h4>
+        	<form method="post" action="">
+        		<p>
+        			<label for="nota1">1º Nota</label>
+        			<input type="text" name="nota1">
+        		</p>
+        		<p>
+        			<label for="nota1">2º Nota</label>
+        			<input type="text" name="nota2">
+        		</p>
+        		<p>
+        			<label for="nota1">3º Nota</label>
+        			<input type="text" name="nota3">
+        		</p>
+        		<button type="submit" name="enviar5">Média</button>
+        		<?php
+                    if (isset($_POST['enviar5'])){
+                        $num1 = $_POST['nota1'];
+                        $num2 = $_POST['nota2'];
+                        $num3 = $_POST['nota3'];
+                    	echo mediana($num1, $num2, $num3);                   
+                    
+                    }
+                    
+                ?>
+        	</form>
+        </div>
+        <div>
+        	<form method="post" action="">
+        		<p>
+        			
+        		</p>
+        	</form>
+        </div>   
+ <br><br>          
 </body>
 </html>
 <?php 
@@ -114,6 +142,22 @@ function divisor($inteiro){
     }
 
 } 
+
+function mediana($num1, $num2, $num3){
+	$media = ($num1 + $num2 + $num3)/3;
+	$mediana = number_format($media, 2, '.', '');
+    if($media>=7){
+    	$result =  "<br>Sua Nota é ".$mediana." Você foi Aprovado!";
+    }else if(5 < $media && $media < 7){
+    	$result = "<br>Sua Nota é ".$mediana." Você está de Recuperação!";
+    }else{
+    	$result =  "<br>Sua Nota é ".$mediana." Você foi Reprovado!";
+    }    
+    
+    return $result;
+}
+
+
 function ordenar($num1, $num2, $num3){ 
     $ordem;
     if ($num1 < $num2) {
